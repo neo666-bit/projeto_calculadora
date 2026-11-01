@@ -1,139 +1,108 @@
 package calculadora;
 
 /**
- * Classe responsavel por realizar as operacoes matematicas basicas do sistema FinancApp.
- * <p>
- * Este modulo oferece suporte aos calculos de orcamento mensal, divisao de despesas,
- * projecao de economia financeira e demais operacoes aritmeticas fundamentais.
- * </p>
+ * Classe que implementa as operacoes basicas da calculadora para o FinancApp.
  *
  * @author Julio
- * @version 2.0
+ * @version 1.0
  */
 public class Calculadora {
 
     /**
-     * Armazena o resultado da ultima operacao matematica realizada pela calculadora.
+     * Guarda o resultado da ultima operacao realizada.
      */
-    private int ultimoResultado = 0;
+    public int resultado = 0;
 
     /**
      * Construtor padrao da classe Calculadora.
-     * Inicializa o estado interno com o ultimo resultado zerado.
      */
     public Calculadora() {
-        // Inicializacao padrao do componente de calculo
-        this.ultimoResultado = 0;
     }
 
     /**
-     * Realiza a operacao de adicao entre dois numeros inteiros.
+     * Realiza a soma de dois numeros inteiros.
      *
-     * @param primeiroValor O primeiro numero inteiro (parcela) a ser somado.
-     * @param segundoValor  O segundo numero inteiro (parcela) a ser somado.
-     * @return O resultado da soma entre {@code primeiroValor} e {@code segundoValor}.
+     * @param a primeiro valor da soma
+     * @param b segundo valor da soma
+     * @return resultado da soma de a e b
      */
-    public int somar(int primeiroValor, int segundoValor) {
-        // Soma simples utilizada, por exemplo, na consolidacao de receitas e despesas
-        return primeiroValor + segundoValor;
+    public int somar(int a, int b) {
+        return a + b;
     }
 
     /**
-     * Realiza a operacao de subtracao entre dois numeros inteiros.
+     * Realiza a subtracao entre dois numeros inteiros.
      *
-     * @param primeiroValor O valor base (minuendo) da subtracao.
-     * @param segundoValor  O valor a ser subtraido (subtraendo).
-     * @return O resultado da diferenca entre {@code primeiroValor} e {@code segundoValor}.
+     * @param a primeiro valor
+     * @param b valor que sera subtraido
+     * @return resultado da subtracao
      */
-    public int subtrair(int primeiroValor, int segundoValor) {
-        // Subtracao utilizada para calculo de saldo restante no orcamento mensal
-        return primeiroValor - segundoValor;
+    public int subtrair(int a, int b) {
+        return a - b;
     }
 
     /**
-     * Realiza a operacao de multiplicacao entre dois numeros inteiros.
+     * Realiza a multiplicacao de dois numeros inteiros.
      *
-     * @param primeiroValor O primeiro fator (multiplicando) da operacao.
-     * @param segundoValor  O segundo fator (multiplicador) da operacao.
-     * @return O produto resultante da multiplicacao entre os dois fatores.
+     * @param a primeiro valor
+     * @param b segundo valor
+     * @return resultado da multiplicacao
      */
-    public int multiplicar(int primeiroValor, int segundoValor) {
-        // Multiplicacao util para projecao de economia financeira ao longo de varios meses
-        return primeiroValor * segundoValor;
+    public int multiplicar(int a, int b) {
+        return a * b;
     }
 
     /**
-     * Realiza a operacao de divisao inteira entre dois numeros.
+     * Realiza a divisao inteira entre dois numeros.
      *
-     * @param dividendo O valor total a ser dividido.
-     * @param divisor   O numero pelo qual o dividendo sera dividido.
-     * @return O quociente inteiro da divisao entre {@code dividendo} e {@code divisor}.
-     * @throws ArithmeticException Caso o {@code divisor} seja igual a zero.
+     * @param a dividendo
+     * @param b divisor
+     * @return resultado da divisao
+     * @throws ArithmeticException caso o divisor (b) seja igual a zero
      */
-    public int dividir(int dividendo, int divisor) throws ArithmeticException {
-        // Verifica se o divisor e zero para impedir falha aritmetica na divisao de despesas
-        if (divisor == 0) {
-            throw new ArithmeticException("Erro: divisao por zero nao e permitida.");
+    public int dividir(int a, int b) throws ArithmeticException {
+        if (b == 0) {
+            throw new ArithmeticException("Erro: divisao por zero nao permitida");
         }
-        return dividendo / divisor;
+        return a / b;
     }
 
     /**
-     * Metodo principal de fachada que executa a operacao matematica solicitada
-     * com base no simbolo do operador informado.
-     * <p>
-     * Este metodo trata internamente divisoes por zero e operadores invalidos,
-     * exibindo mensagens informativas no console e evitando a interrupcao do programa.
-     * </p>
+     * Metodo principal que chama a operacao escolhida conforme o operador informado.
      *
-     * @param a  O primeiro operando inteiro da operacao.
-     * @param b  O segundo operando inteiro da operacao.
-     * @param op O simbolo da operacao desejada: {@code "+"}, {@code "-"}, {@code "*"} ou {@code "/"}.
-     * @return O resultado inteiro da operacao ou {@code 0} caso ocorra erro de validacao ou divisao por zero.
+     * @param a primeiro numero inteiro
+     * @param b segundo numero inteiro
+     * @param op operador matematico ("+", "-", "*" ou "/")
+     * @return resultado da operacao ou 0 em caso de erro
      */
     public int calc(int a, int b, String op) {
-        // Validacao preventiva contra operador nulo
-        if (op == null) {
-            System.out.println("Erro: operacao invalida (nula).");
-            ultimoResultado = 0;
-            return ultimoResultado;
-        }
-
-        // Seleciona e executa a operacao correspondente com tratamento seguro de excecoes
+        // Escolhe a operacao de acordo com o simbolo recebido
         try {
             switch (op) {
                 case "+":
-                    ultimoResultado = somar(a, b);
+                    resultado = somar(a, b);
                     break;
                 case "-":
-                    ultimoResultado = subtrair(a, b);
+                    resultado = subtrair(a, b);
                     break;
                 case "*":
-                    ultimoResultado = multiplicar(a, b);
+                    resultado = multiplicar(a, b);
                     break;
                 case "/":
-                    ultimoResultado = dividir(a, b);
+                    resultado = dividir(a, b);
                     break;
                 default:
-                    throw new IllegalArgumentException("Operacao invalida: " + op);
+                    System.out.println("Erro: operacao invalida");
+                    resultado = 0;
+                    break;
             }
-        } catch (ArithmeticException | IllegalArgumentException e) {
-            // Captura erros matematicos ou de operador invalido sem interromper a execucao do sistema
+        } catch (ArithmeticException e) {
+            // Trata o erro de divisao por zero sem travar o programa
             System.out.println(e.getMessage());
-            ultimoResultado = 0;
+            resultado = 0;
         }
 
-        // Exibe e retorna o resultado obtido na operacao
-        System.out.println("Resultado = " + ultimoResultado);
-        return ultimoResultado;
-    }
-
-    /**
-     * Obtem o valor armazenado da ultima operacao executada pela calculadora.
-     *
-     * @return O ultimo resultado calculado.
-     */
-    public int getUltimoResultado() {
-        return ultimoResultado;
+        System.out.println("Resultado = " + resultado);
+        return resultado;
     }
 }

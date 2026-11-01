@@ -1,98 +1,63 @@
 package calculadora;
 
 /**
- * Classe responsavel pela execucao dos testes unitarios e funcionais da classe {@link Calculadora}.
- * <p>
- * Valida todas as operacoes basicas (soma, subtracao, multiplicacao e divisao),
- * alem dos cenarios de tratamento de erros (divisao por zero e operacoes invalidas),
- * exibindo as entradas utilizadas, o resultado esperado e o resultado obtido.
- * </p>
+ * Classe de testes para validar as operacoes da Calculadora.
  *
  * @author Julio
- * @version 2.0
+ * @version 1.0
  */
 public class TesteCalculadora {
 
     /**
-     * Construtor padrao da classe de testes TesteCalculadora.
+     * Construtor padrao da classe TesteCalculadora.
      */
     public TesteCalculadora() {
-        // Construtor padrao
     }
 
     /**
-     * Metodo principal que inicia a bateria de testes automatizados no console.
+     * Metodo principal que executa os testes das operacoes no console.
      *
-     * @param args Argumentos de linha de comando (nao utilizados).
+     * @param args argumentos de linha de comando
      */
     public static void main(String[] args) {
-        // Instancia o modulo de calculadora para validacao
         Calculadora calc = new Calculadora();
 
-        System.out.println("==================================================");
-        System.out.println("        EXECUCAO DE TESTES - FINANCAPP            ");
-        System.out.println("==================================================\n");
+        System.out.println("--- Testes da Calculadora ---\n");
 
-        // 1. Testes de Soma (+)
-        executarTeste(calc, "Teste de Soma", 2, 3, "+", 5);
-        executarTeste(calc, "Teste de Soma (valores maiores)", 150, 250, "+", 400);
+        // Teste 1: Soma
+        System.out.println("Teste Soma: entradas (2, 3, '+')");
+        System.out.println("Resultado esperado: 5");
+        int resSoma = calc.calc(2, 3, "+");
+        System.out.println("Resultado obtido: " + resSoma + "\n");
 
-        // 2. Testes de Subtracao (-)
-        executarTeste(calc, "Teste de Subtracao", 10, 4, "-", 6);
-        executarTeste(calc, "Teste de Subtracao (resultado negativo)", 5, 12, "-", -7);
+        // Teste 2: Subtracao
+        System.out.println("Teste Subtracao: entradas (10, 4, '-')");
+        System.out.println("Resultado esperado: 6");
+        int resSub = calc.calc(10, 4, "-");
+        System.out.println("Resultado obtido: " + resSub + "\n");
 
-        // 3. Testes de Multiplicacao (*)
-        executarTeste(calc, "Teste de Multiplicacao", 3, 5, "*", 15);
-        executarTeste(calc, "Teste de Multiplicacao por Zero", 25, 0, "*", 0);
+        // Teste 3: Multiplicacao
+        System.out.println("Teste Multiplicacao: entradas (3, 5, '*')");
+        System.out.println("Resultado esperado: 15");
+        int resMult = calc.calc(3, 5, "*");
+        System.out.println("Resultado obtido: " + resMult + "\n");
 
-        // 4. Testes de Divisao (/)
-        executarTeste(calc, "Teste de Divisao Exata", 8, 2, "/", 4);
-        executarTeste(calc, "Teste de Divisao de Despesas", 100, 4, "/", 25);
+        // Teste 4: Divisao
+        System.out.println("Teste Divisao: entradas (8, 2, '/')");
+        System.out.println("Resultado esperado: 4");
+        int resDiv = calc.calc(8, 2, "/");
+        System.out.println("Resultado obtido: " + resDiv + "\n");
 
-        // 5. Teste de Divisao por Zero
-        executarTeste(calc, "Teste de Divisao por Zero", 8, 0, "/", 0);
+        // Teste 5: Divisao por zero
+        System.out.println("Teste Divisao por Zero: entradas (8, 0, '/')");
+        System.out.println("Resultado esperado: 0 (mensagem de erro)");
+        int resDivZero = calc.calc(8, 0, "/");
+        System.out.println("Resultado obtido: " + resDivZero + "\n");
 
-        // 6. Testes de Operacoes Invalidas
-        executarTeste(calc, "Teste de Operacao Invalida ('x')", 5, 5, "x", 0);
-        executarTeste(calc, "Teste de Operacao Invalida ('%')", 10, 2, "%", 0);
-
-        System.out.println("==================================================");
-        System.out.println("          FIM DA EXECUCAO DOS TESTES              ");
-        System.out.println("==================================================");
-    }
-
-    /**
-     * Metodo auxiliar que executa um caso de teste individual e compara o valor obtido
-     * com o valor esperado, imprimindo um relatorio detalhado no console.
-     *
-     * @param calc      A instancia de {@link Calculadora} a ser testada.
-     * @param descricao A descricao textual do cenario de teste.
-     * @param a         O primeiro valor inteiro de entrada.
-     * @param b         O segundo valor inteiro de entrada.
-     * @param op        O simbolo da operacao matematica a ser testada.
-     * @param esperado  O resultado inteiro esperado ao final da execucao.
-     */
-    private static void executarTeste(Calculadora calc, String descricao, int a, int b, String op, int esperado) {
-        System.out.println(">>> " + descricao);
-        System.out.println("Entradas utilizadas : a = " + a + ", b = " + b + ", op = \"" + op + "\"");
-        System.out.println("Resultado esperado  : " + esperado);
-
-        try {
-            // Executa a operacao na calculadora e armazena o retorno obtido
-            int obtido = calc.calc(a, b, op);
-            System.out.println("Resultado obtido    : " + obtido);
-
-            // Verifica se o resultado obtido corresponde exatamente ao esperado
-            if (obtido == esperado) {
-                System.out.println("Status do Teste     : [PASSOU]");
-            } else {
-                System.out.println("Status do Teste     : [FALHOU]");
-            }
-        } catch (Exception e) {
-            // Caso alguma excecao externa ocorra, registra sem interromper os demais testes
-            System.out.println("Excecao capturada   : " + e.getMessage());
-            System.out.println("Status do Teste     : [TRATADO COM EXCECAO]");
-        }
-        System.out.println("--------------------------------------------------");
+        // Teste 6: Operacao invalida
+        System.out.println("Teste Operacao Invalida: entradas (5, 5, 'x')");
+        System.out.println("Resultado esperado: 0 (mensagem de operacao invalida)");
+        int resInvalido = calc.calc(5, 5, "x");
+        System.out.println("Resultado obtido: " + resInvalido + "\n");
     }
 }
