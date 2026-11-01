@@ -2,29 +2,61 @@ package calculadora;
 
 public class Calculadora {
 
-    public int r = 0;
+    private int ultimoResultado = 0;
+
+    public int somar(int primeiroValor, int segundoValor) {
+        return primeiroValor + segundoValor;
+    }
+
+    public int subtrair(int primeiroValor, int segundoValor) {
+        return primeiroValor - segundoValor;
+    }
+
+    public int multiplicar(int primeiroValor, int segundoValor) {
+        return primeiroValor * segundoValor;
+    }
+
+    public int dividir(int dividendo, int divisor) {
+        if (divisor == 0) {
+            throw new ArithmeticException("Erro: divisao por zero nao e permitida.");
+        }
+        return dividendo / divisor;
+    }
 
     public int calc(int a, int b, String op) {
-        // Calculadora
-        if (op.equals("+")) {
-            r = a + b;
-        } else if (op.equals("-")) {
-            r = a - b;
-        } else if (op.equals("*")) {
-            r = a * b;
-        } else if (op.equals("/")) {
-            if (b != 0) {
-                r = a / b;
-            } else {
-                System.out.println("Erro: divisao por zero, operacao irregular");
-                r = 0;
-            }
-        } else {
-            System.out.println("Operacao invalida");
-            r = 0;
+        if (op == null) {
+            System.out.println("Erro: operacao invalida (nula).");
+            ultimoResultado = 0;
+            return ultimoResultado;
         }
 
-        System.out.println("Resultado = " + r);
-        return r;
+        try {
+            switch (op) {
+                case "+":
+                    ultimoResultado = somar(a, b);
+                    break;
+                case "-":
+                    ultimoResultado = subtrair(a, b);
+                    break;
+                case "*":
+                    ultimoResultado = multiplicar(a, b);
+                    break;
+                case "/":
+                    ultimoResultado = dividir(a, b);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Operacao invalida: " + op);
+            }
+        } catch (ArithmeticException | IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            ultimoResultado = 0;
+        }
+
+        System.out.println("Resultado = " + ultimoResultado);
+        return ultimoResultado;
+    }
+
+    public int getUltimoResultado() {
+        return ultimoResultado;
     }
 }
