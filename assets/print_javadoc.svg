@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="540" viewBox="0 0 820 540">
+  <rect width="820" height="540" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+  <rect width="820" height="44" rx="8" fill="#4d7a97"/>
+  <text x="24" y="28" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold">OVERVIEW   PACKAGE   CLASS   TREE   INDEX   HELP</text>
+  <text x="680" y="28" fill="#e1ecf4" font-family="Segoe UI, Arial, sans-serif" font-size="12">JavaDoc - FinancApp</text>
+
+  <rect x="0" y="44" width="820" height="32" fill="#dee3e9"/>
+  <text x="24" y="65" fill="#353833" font-family="Segoe UI, Arial, sans-serif" font-size="12">SUMMARY: CONSTR | METHOD      DETAIL: CONSTR | METHOD</text>
+
+  <text x="24" y="106" fill="#4a6782" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold">Package calculadora</text>
+  <text x="24" y="134" fill="#2c4557" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="bold">Class Calculadora</text>
+  <text x="24" y="158" fill="#555555" font-family="Consolas, monospace" font-size="13">java.lang.Object</text>
+  <text x="40" y="176" fill="#555555" font-family="Consolas, monospace" font-size="13">└── calculadora.Calculadora</text>
+
+  <line x1="24" y1="190" x2="796" y2="190" stroke="#d0d7de" stroke-width="1"/>
+  <text x="24" y="212" fill="#333333" font-family="Consolas, monospace" font-size="13">public class Calculadora extends Object</text>
+  <text x="24" y="236" fill="#333333" font-family="Segoe UI, Arial, sans-serif" font-size="13">Classe responsavel por realizar as operacoes matematicas basicas do sistema FinancApp.</text>
+  <text x="24" y="256" fill="#333333" font-family="Segoe UI, Arial, sans-serif" font-size="13">Version: 2.0   |   Author: Julio</text>
+
+  <rect x="24" y="276" width="772" height="32" fill="#4d7a97"/>
+  <text x="36" y="297" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold">Method Summary</text>
+
+  <rect x="24" y="308" width="772" height="28" fill="#f8f9fa" stroke="#dee3e9"/>
+  <text x="36" y="326" fill="#353833" font-family="Consolas, monospace" font-size="12" font-weight="bold">Modifier and Type</text>
+  <text x="190" y="326" fill="#353833" font-family="Consolas, monospace" font-size="12" font-weight="bold">Method</text>
+  <text x="430" y="326" fill="#353833" font-family="Consolas, monospace" font-size="12" font-weight="bold">Description</text>
+
+  <g font-family="Consolas, monospace" font-size="12" fill="#2c4557">
+    <rect x="24" y="336" width="772" height="32" fill="#ffffff" stroke="#dee3e9"/>
+    <text x="36" y="356">int</text>
+    <text x="190" y="356" fill="#4a6782" font-weight="bold">calc(int a, int b, String op)</text>
+    <text x="430" y="356" font-family="Segoe UI, sans-serif">Executa a operacao matematica solicitada com base no operador.</text>
+
+    <rect x="24" y="368" width="772" height="32" fill="#eeeeff" stroke="#dee3e9"/>
+    <text x="36" y="388">int</text>
+    <text x="190" y="388" fill="#4a6782" font-weight="bold">somar(int primeiroValor, int segundoValor)</text>
+    <text x="470" y="388" font-family="Segoe UI, sans-serif">Realiza a operacao de adicao entre dois inteiros.</text>
+
+    <rect x="24" y="400" width="772" height="32" fill="#ffffff" stroke="#dee3e9"/>
+    <text x="36" y="420">int</text>
+    <text x="190" y="420" fill="#4a6782" font-weight="bold">subtrair(int primeiroValor, int segundoValor)</text>
+    <text x="470" y="420" font-family="Segoe UI, sans-serif">Realiza a operacao de subtracao entre dois inteiros.</text>
+
+    <rect x="24" y="432" width="772" height="32" fill="#eeeeff" stroke="#dee3e9"/>
+    <text x="36" y="452">int</text>
+    <text x="190" y="452" fill="#4a6782" font-weight="bold">multiplicar(int primeiroValor, int segundoValor)</text>
+    <text x="470" y="452" font-family="Segoe UI, sans-serif">Realiza a operacao de multiplicacao entre dois inteiros.</text>
+
+    <rect x="24" y="464" width="772" height="32" fill="#ffffff" stroke="#dee3e9"/>
+    <text x="36" y="484">int</text>
+    <text x="190" y="484" fill="#4a6782" font-weight="bold">dividir(int dividendo, int divisor)</text>
+    <text x="470" y="484" font-family="Segoe UI, sans-serif">Realiza a divisao inteira (throws ArithmeticException).</text>
+  </g>
+</svg>
